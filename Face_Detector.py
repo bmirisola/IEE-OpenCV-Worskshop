@@ -13,14 +13,13 @@ while (True):
     ret, frame = cap.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    #returns potential faces as an array of rectangles
+    #returns potential faces as an array of rectangles (coordinates)
+    # Parameters:
+    # gray = frame to classify faces from
+    # scaleFactor = specifies how much the image size is reduced at each image scale.
+    # minNeighbors = species how many neighbors each candidate rectangle should have, to retain it. A higher number gives lower false positives.
+    # minsize =  minimum rectangle size to be considered a face.
     faces = face_cascade.detectMultiScale(gray, scaleFactor=1.2, minNeighbors=5, minSize=(20, 20))
-    #Parameters:
-    #gray = frame to classify faces from
-    #scaleFactor = specifies how much the image size is reduced at each image scale.
-    #minNeighbors = species how many neighbors each candidate rectangle should have, to retain it. A higher number gives lower false positives.
-    #minsize =  minimum rectangle size to be considered a face.
-
 
     #If faces are found, it returns the positions of detected faces as a rectangle with the left up corner (x,y)
     # and having "w" as its Width and "h" as its Height ==> (x,y,w,h).
